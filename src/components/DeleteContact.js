@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ContactBookServices from '../services/ContactBookServices';
+import ContactBookService from '../services/ContactBookService';
 
 class DeleteContact extends Component {
     constructor(props)
@@ -21,7 +21,7 @@ class DeleteContact extends Component {
 
      componentDidMount()
      {
-        ContactBookServices.getContactById(this.state.id).then((res) =>{
+        ContactBookService.getContactById(this.state.id).then((res) =>{
           let contact = res.data;
           this.setState({name:contact.name,
                   number:contact.number,
@@ -46,7 +46,7 @@ class DeleteContact extends Component {
         };
 
         console.log(contact);
-        ContactBookServices.deleteContact(this.state.id).then(res => {
+        ContactBookService.deleteContact(this.state.id).then(res => {
             
             this.props.history.push('/contacts');
         })
@@ -69,27 +69,27 @@ class DeleteContact extends Component {
                               <form>  
                                   <div className="form-group">
                                       <label>Contact ID: </label>
-                                      <input placeholder="Id" readOnly="true" name="id" className="form-control"
+                                      <input placeholder="Id" readOnly={true} name="id" className="form-control"
                                          value={this.state.id} onChange={this.idHandler} />
                                    </div>   
                                    <div className="form-group">
                                       <label>Contact Name: </label>
-                                      <input placeholder="Name" readOnly= "true" name="name" className="form-control"
+                                      <input placeholder="Name" readOnly= {true} name="name" className="form-control"
                                          value={this.state.name} onChange={this.nameHandler} />
                                    </div>   
                                    <div className="form-group">
                                       <label>Contact Number: </label>
-                                      <input placeholder="Number" readOnly="true" name="number" className="form-control"
+                                      <input placeholder="Number" readOnly={true} name="number" className="form-control"
                                          value={this.state.number} onChange={this.numberHandler} />
                                    </div>   
                                    <div className="form-group">
                                       <label>Contact Email: </label>
-                                      <input placeholder="Email" readOnly="true" name="email" className="form-control"
+                                      <input placeholder="Email" readOnly={true} name="email" className="form-control"
                                          value={this.state.email} onChange={this.emailHandler} />
                                    </div>  
                                    <div className="form-group">
                                       <label>Contact Address: </label>
-                                      <input placeholder="Address" readOnly="true" name="address" className="form-control"
+                                      <input placeholder="Address" readOnly={true} name="address" className="form-control"
                                          value={this.state.address} onChange={this.addressHandler} />
                                    </div>    
                                     <button className="btn btn-success" onClick={this.deleteContact}> Delete </button>

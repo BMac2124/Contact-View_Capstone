@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import ContactBookService from "../services/ContactBookService";
 
-
-class AddContact extends Component {
-  constructor(props) 
-  {
+class UpdateContact extends Component {
+  constructor(props) {
     super(props);
+
     this.state = {
-      id: "",
+      id: this.props.match.params.id,
       name: "",
       number: "",
       email: "",
@@ -19,7 +18,20 @@ class AddContact extends Component {
     this.numberHandler = this.numberHandler.bind(this);
     this.emailHandler = this.emailHandler.bind(this);
     this.addressHandler = this.addressHandler.bind(this);
+    this.UpdateContact = this.UpdateContact.bind(this);
   } //constructor
+
+  componentDidMount() {
+    ContactBookService.getContactById(this.state.id).then((res) => {
+      let contact = res.data;
+      this.setState({
+        name: contact.name,
+        number: contact.number,
+        email: contact.email,
+        address: contact.address,
+      });
+    });
+  }
 
   idHandler = (event) => {
     this.setState({
@@ -38,37 +50,31 @@ class AddContact extends Component {
       number: event.target.value,
     });
   };
-
   emailHandler = (event) => {
     this.setState({
       email: event.target.value,
     });
   };
-
   addressHandler = (event) => {
     this.setState({
-        address: event.target.value,
+      address: event.target.value,
     });
   };
 
-  saveContact = (e) => {
+  UpdateContact = (e) => {
     e.preventDefault();
     let contact = {
       id: this.state.id,
       name: this.state.name,
       number: this.state.number,
       email: this.state.email,
-      addrress: this.state.address,
+      address: this.state.address,
     };
-    console.log(contact);
-    ContactBookService.createContact(contact)
-      .then((res) => {
-        this.props.history.push("/contacts");
-      })
-      .catch((err) => {
-        console.log("record not logged!");
-      });
-  }; //closing save method
+
+    ContactBookService.UpdateContact(contact, this.state.id).then((res) => {
+      this.props.history.push("/contacts");
+    });
+  };
 
   cancel() {
     this.props.history.push("/contacts");
@@ -80,13 +86,14 @@ class AddContact extends Component {
         <div className="container">
           <div className="row">
             <div className="card col-md-6 offset-md-3 offset-md-3">
-              <h3 className="text-center">Add Contact</h3>
+              <h3 className="text-center">Update Contact</h3>
               <div className="card-body">
                 <form>
                   <div className="form-group">
                     <label>Contact ID: </label>
                     <input
-                      placeholder="Id"
+                      placeholder={this.state.id}
+                      readOnly="true"
                       name="id"
                       className="form-control"
                       value={this.state.id}
@@ -135,10 +142,10 @@ class AddContact extends Component {
                   </div>
                   <button
                     className="btn btn-success"
-                    onClick={this.saveContact}
+                    onClick={this.UpdateContact}
                   >
                     {" "}
-                    Save{" "}
+                    Update{" "}
                   </button>
                   <button
                     className="btn btn-danger"
@@ -157,4 +164,4 @@ class AddContact extends Component {
   }
 }
 
-export default AddContact;
+export default UpdateContact;
