@@ -63,8 +63,8 @@ class DeleteContact extends Component {
             <div>
                <div className="container">
                    <div className="row">
-                      <div className="card col-md-6 offset-md-3 offset-md-3">
-                          <h3 className="text-center">Delete Contact</h3>
+                      <div>
+                          <h3 className="text-center">Delete Contact 🚨</h3>
                           <div className="card-body">
                               <form>  
                                   <div className="form-group">
@@ -92,8 +92,8 @@ class DeleteContact extends Component {
                                       <input placeholder="Address" readOnly={true} name="address" className="form-control"
                                          value={this.state.address} onChange={this.addressHandler} />
                                    </div>    
-                                    <button className="btn btn-success" onClick={this.deleteContact}> Delete </button>
-                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>                    
+                                    <button className="btn btn-danger" onClick={this.deleteContact}> Delete </button>
+                                    <button className="btn btn-warning" onClick={this.cancel.bind(this)}> Cancel </button>                    
                               </form>
                           </div>
                       </div>

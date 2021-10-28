@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import ContactBookService from "../services/ContactBookService";
 
-
 class AddContact extends Component {
-  constructor(props) 
-  {
+  constructor(props) {
     super(props);
     this.state = {
       id: "",
@@ -47,7 +45,7 @@ class AddContact extends Component {
 
   addressHandler = (event) => {
     this.setState({
-        address: event.target.value,
+      address: event.target.value,
     });
   };
 
@@ -58,7 +56,7 @@ class AddContact extends Component {
       name: this.state.name,
       number: this.state.number,
       email: this.state.email,
-      addrress: this.state.address,
+      address: this.state.address,
     };
     console.log(contact);
     ContactBookService.createContact(contact)
@@ -77,10 +75,10 @@ class AddContact extends Component {
   render() {
     return (
       <div>
-        <div className="container">
+        <div className="box">
           <div className="row">
-            <div className="card col-md-6 offset-md-3 offset-md-3">
-              <h3 className="text-center">Add Contact</h3>
+            <div>
+              <h3 className="text-center">Add ➕ Contact</h3>
               <div className="card-body">
                 <form>
                   <div className="form-group">
@@ -134,14 +132,14 @@ class AddContact extends Component {
                     />
                   </div>
                   <button
-                    className="btn btn-success"
+                    className="btn btn-light"
                     onClick={this.saveContact}
                   >
                     {" "}
                     Save{" "}
                   </button>
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-dark"
                     onClick={this.cancel.bind(this)}
                   >
                     {" "}

@@ -71,7 +71,7 @@ class UpdateContact extends Component {
       address: this.state.address,
     };
 
-    ContactBookService.UpdateContact(contact, this.state.id).then((res) => {
+    ContactBookService.updateContact(contact, this.state.id).then((res) => {
       this.props.history.push("/contacts");
     });
   };
@@ -85,8 +85,8 @@ class UpdateContact extends Component {
       <div>
         <div className="container">
           <div className="row">
-            <div className="card col-md-6 offset-md-3 offset-md-3">
-              <h3 className="text-center">Update Contact</h3>
+            <div>
+              <h3 className="text-center">Update Contact 👍🏼</h3>
               <div className="card-body">
                 <form>
                   <div className="form-group">
@@ -141,7 +141,7 @@ class UpdateContact extends Component {
                     />
                   </div>
                   <button
-                    className="btn btn-success"
+                    className="btn btn-light"
                     onClick={this.UpdateContact}
                   >
                     {" "}

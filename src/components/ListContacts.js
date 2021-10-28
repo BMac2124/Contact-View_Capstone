@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ContactBookService from '../services/ContactBookService';
 
+
 class ListContacts extends Component {
       constructor(props)
       {
@@ -52,9 +53,9 @@ class ListContacts extends Component {
     render() {
         return (
             <div>
-                <h2 className="text-center">Contacts List</h2>
+                <h2 className="text-center">Contact List 📃</h2>
                 <div> 
-                    <button className="btn btn-primary" onClick={this.addContact}> Add Contact</button>
+                    <button className="btn btn-light" onClick={this.addContact}> Add Contact</button>
                 </div>
                 <div>
                     <p></p>
@@ -63,9 +64,9 @@ class ListContacts extends Component {
                     <table className="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>Contat Id</th>
+                                <th>Contact Id</th>
                                 <th>Contact Name</th>
-                                <th>Contact Number</th>
+                                <th>Contact Number</th>                        
                                 <th>Contact Email</th>
                                 <th>Contact Address</th>
                                 <th>Actions</th>
@@ -78,11 +79,13 @@ class ListContacts extends Component {
                                      <tr key={contact.id}>
                                          <td>{contact.id}</td>
                                          <td>{contact.name}</td>
-                                         <td>{contact.grade}</td>
+                                         <td>{contact.number}</td>
+                                         <td>{contact.email}</td>
+                                         <td> {contact.address}</td>
                                          <td>
-                                            <button onClick={() =>this.editContact(contact.id)} className="btn btn-primary">Update</button> 
-                                            <button onClick={() =>this.deleteContact(contact.id)} className="btn btn-danger">Delete</button> 
-                                            <button onClick={() =>this.viewContact(contact.id)} className="btn btn-primary">View</button> 
+                                            <button onClick={() =>this.editContact(contact.id)} className="btn btn-dark">Update</button> 
+                                            <button onClick={() =>this.deleteContact(contact.id)} className="btn btn-light">Delete</button> 
+                                            <button onClick={() =>this.viewContact(contact.id)} className="btn btn-dark">View</button> 
                                          </td>
                                      </tr>
                                 )

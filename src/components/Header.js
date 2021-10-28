@@ -6,7 +6,7 @@ class Header extends Component {
             <div>
                 <header>
                     <nav className="navbar">
-                        <div><b>Contact Book Application (header)</b></div>
+                        <div><b>Contact 👁 View</b></div>
                     </nav>
                 </header>
             </div>
