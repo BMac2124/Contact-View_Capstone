@@ -1,5 +1,5 @@
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddContact from "./components/AddContact";
 import UpdateContact from "./components/UpdateContact";
